@@ -1,6 +1,6 @@
 
 
-	Your new folder by the name of  ---  stuff  ---  has been created 
+	Your new folder by the name of  ---  pers_page  ---  has been created 
 				
 
 

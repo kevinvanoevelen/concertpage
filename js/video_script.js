@@ -39,12 +39,19 @@ var create_video = function() {
 			var tag = video_ids[(frame_itr-1)]
 
 			var frame = document.createElement('iframe');
+			// var wrapper = document.createElement('div');
+			// var app_wrapper = video_wrap.appendChild(wrapper);
 			var app_vid = video_wrap.appendChild(frame);
 
 			var frame_id = "frame_" + (frame_itr);
 			var source = "https://www.youtube.com/embed/" + tag + "?enablejsapi=1&controls=2&showinfo=1&autohide=1&autoplay=0&loop=0&rel=0";
 
 			var takeback = frame_itr-1;
+
+			// var wrapper_id = "wrapper_" + frame_itr;
+
+			// wrapper.setAttribute('id', wrapper_id);
+			// wrapper.setAttribute('class', "indi_vid_wrap");
 
 			if(frame_itr === 1) { 
 				frame.classList.add('large_vid');
@@ -67,6 +74,8 @@ var create_video = function() {
 
 		} else {
 
+			// click_video();
+
 			return;
 
 		};
@@ -87,19 +96,21 @@ var create_video = function() {
 		var sm_right = small_right + "px";
 
 		var opac = 0;
-		var agg = 0.0006;
-		var max_opac = 1;
+		var max_opac = 0.99;
+		var agg = 0.01;
+		var acc = 0.001; // accelerator
 
 		function show_frames() {
 
-			if(opac > 1) { opac = 1; };
-
 			if(opac >= max_opac) {
+				console.log("opac finally is " + opac);
+				if(opac > max_opac) { opac = max_opac; };
+				frame.style.opacity = opac;
 				clearInterval(interval);
 			} else {
 				frame.style.opacity = opac;
 				opac = (opac+agg);
-				agg = (agg+0.00006);
+				agg = (agg+acc);
 			};
 
 		};
@@ -118,7 +129,7 @@ var create_video = function() {
 			frame.style.right = sm_right;
 			frame.style.display = "inline-block";
 			
-			var interval = setInterval(show_frames,20);
+			var interval = setInterval(show_frames,5);
 			
 			sm_itr_height = (sm_itr_height+small_clientHeight);
 
@@ -128,8 +139,79 @@ var create_video = function() {
 
 		};
 
-	}; 
+	};
+
+	// var click_video = function() {
+
+		// 	var clk = {}
+
+		// 	clk.frms = document.getElementsByTagName('iframe');
+
+		// 	console.log("hello frames: " + clk.frms);
+
+		// 	for(var i = 0; i < clk.frms.length; i++) {
+
+		// 		clk.this_id = clk.frms[i].id;
+		// 		clk.par_frame = document.getElementById(clk.this_id).parentElement.id;
+		// 		clk.parents = document.getElementById(clk.par_frame);
+
+		// 		console.log("hello id: " + clk.this_id + " hello frame: " + clk.par_frame);
+
+		// 		clk.parents.onclick = function() {
+
+		// 			console.log("hello click");
+
+		// 		};
+
+		// 	};
+
+	// };
 
 }; create_video();
 
-console.log("this is the state on 4: " + state);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

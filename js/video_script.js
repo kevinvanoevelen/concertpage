@@ -62,7 +62,7 @@ var create_video = function() {
 			} else {
 				frame.classList.add('small_vid');  // ok
 				iframe.classList.add('inact_vid');
-				controls = 0;
+				controls = 2;
 			};
 
 			var source = "https://www.youtube.com/embed/" + video_id + "?enablejsapi=1&controls=" + controls + "&showinfo=1&autohide=1&rel=0&autoplay=0";

@@ -96,7 +96,7 @@ function write_footer() {
 
 	foot_area.innerHTML = foot_text;
 
-}; write_footer();
+}; write_footer(); 
 
 
 

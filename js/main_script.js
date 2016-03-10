@@ -10,14 +10,23 @@ console.log("this is the state on 1: " + state);
 var inner_width = window.innerWidth;
 var inner_height = window.innerHeight;
 
+console.log("inner_height: " + inner_height);
+console.log("window.innerHeight: " + window.innerHeight);
 
-var section_wrap = document.getElementById('section_wrap');
-var height_hiatus = 160; // everything that adds to the height, except the section_wrap/header nav
+var section_wraps = document.getElementsByClassName('section_wrap');
+var height_hiatus = 158; // everything that adds to the height, except the section_wrap/header nav
 var header_nav = document.getElementById('nav_bar');
+var column = document.getElementById('column');
+var wrapper = document.getElementById('wrapper');
+var height_var = (inner_height-height_hiatus).toString() + "px";
 
 // // automatically calculates and sets the min height of .wrapper
-section_wrap.style.Height = (inner_height-height_hiatus) + "px";
-header_nav.style.Height = (inner_height-height_hiatus) + "px";
+for(var i = 0; i < section_wraps.length; i++) {section_wraps[i].style.height = height_var;
+console.log("sect_height: " + section_wraps[i].style.height);};
+header_nav.style.height = height_var;
+column.style.height = inner_height;
+wrapper.style.height = inner_height;
+console.log("sect_height: " + header_nav.style.height + " - " + column.style.height);
 
 
 // NAVIGATION SCRIPTS

@@ -2,10 +2,14 @@
 
 // VIDEO SCRIPTS
 
+var opt = {
 
-function you_tube_iframes() {
+	container_id: 'video_wrap',   // id of html element which will hold the divs with iframes
+	large_width: 640,
+	small_width: 200,
+	height_ind: 0.55,   // % of the width you want the height to be
 
-	var video_ids = [
+	ytv_id: [
 
 		// initially large (title video)
 		"4kgAkTXPMw8",
@@ -15,25 +19,26 @@ function you_tube_iframes() {
 		"SEGAIM8580E",
 		"53fNwWjYLW4",
 
-	];
+	],
+
+};
 
 
+function you_tube_iframes(options) {
+
+	var video_ids = options.ytv_id;
+	var container_id = options.container_id;
+	var large_width = options.large_width + "px";
+	var large_height = Math.round(options.large_width*options.height_ind) + "px";
+	var small_width = options.small_width + "px";
+	var small_height = Math.round(options.small_width*options.height_ind) + "px";
+
+	var main_wrapper = document.getElementById(container_id);
 
 	var create_video = function() {
 
-		var video_wrap = document.getElementById('video_wrap');
-		var iframes = [];// useless
 		var frame_itr = 0;
-		var takeback;// useless
 		var sm_itr_height = 0;
-
-		var large_top = 110;
-		var large_left = 60;
-		var small_top = 90;
-		var small_right = 0;
-		var small_height = 110;
-		var small_margin_bottom = 30;
-		var small_clientHeight = small_height + small_margin_bottom;
 
 		var make_frames = function() {
 
@@ -43,7 +48,7 @@ function you_tube_iframes() {
 				var controls = 2;// useless
 
 				var frame = document.createElement('div');
-				var app_frame = video_wrap.appendChild(frame);
+				var app_frame = main_wrapper.appendChild(frame);
 
 				var frame_id = "frame_" + (frame_itr+1);
 				frame.setAttribute('id', frame_id);
@@ -51,7 +56,6 @@ function you_tube_iframes() {
 
 				frame.style.opacity = "0";
 				frame.style.display = "none";
-
 				
 				var iframe = document.createElement('iframe');
 				var app_vid = app_frame.appendChild(iframe);
@@ -59,10 +63,17 @@ function you_tube_iframes() {
 				if(frame_itr === 0) { 
 					frame.classList.add('large_vid');
 					iframe.classList.add('act_vid');
+					frame.style.width = large_width;
+					frame.style.height = large_height;
+					iframe.style.width = large_width;
+					iframe.style.height = large_height;
 				} else {
 					frame.classList.add('small_vid');
 					iframe.classList.add('inact_vid');
-					controls = 2;// useless
+					frame.style.width = small_width;
+					frame.style.height = small_height;
+					iframe.style.width = small_width;
+					iframe.style.height = small_height;
 				};
 
 				var source = "https://www.youtube.com/embed/" + video_id + "?enablejsapi=1&controls=" + controls + "&showinfo=1&autohide=1&rel=0&autoplay=0";
@@ -90,9 +101,17 @@ function you_tube_iframes() {
 
 		var position_frames = function(j) {
 
-			var pos_frames = document.getElementsByClassName('indi_vid_wrap');
-			var pos_frame_id = pos_frames[j].id;
+			var pos_frame_id = document.getElementsByClassName('indi_vid_wrap')[j].id;
+			// var pos_frame_id = pos_frames[j].id;
 			var pos_frame = document.getElementById(pos_frame_id);
+
+			var large_top = 110;
+			var large_left = 60;
+			var small_top = 90;
+			var small_right = 0;
+			var small_height = 110;
+			var small_margin_bottom = 30;
+			var small_clientHeight = small_height + small_margin_bottom;
 
 			var lg_top = large_top + "px";
 			var lg_left = large_left + "px";
@@ -103,7 +122,6 @@ function you_tube_iframes() {
 			var max_opac = 0.99;
 			var agg = 0.01;
 			var acc = 0.001;
-			var int_itr = 0;
 
 			function show_frames() {
 
@@ -115,9 +133,6 @@ function you_tube_iframes() {
 					pos_frame.style.opacity = opac;
 					opac = (opac+agg);
 					agg = (agg+acc);
-
-					int_itr++;
-
 				};
 
 			};
@@ -188,7 +203,7 @@ function you_tube_iframes() {
 
 	}; 
 
-}; you_tube_iframes();
+}; you_tube_iframes(opt);
 
 
 

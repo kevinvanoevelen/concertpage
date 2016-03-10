@@ -5,13 +5,27 @@
 var state = document.readyState;
 console.log("this is the state on 1: " + state);
 
+//	capturing the window width and height for further use
+
+var inner_width = window.innerWidth;
+var inner_height = window.innerHeight;
+
+
+var section_wrap = document.getElementById('section_wrap');
+var height_hiatus = 160; // everything that adds to the height, except the section_wrap/header nav
+var header_nav = document.getElementById('nav_bar');
+
+// // automatically calculates and sets the min height of .wrapper
+section_wrap.style.Height = (inner_height-height_hiatus) + "px";
+header_nav.style.Height = (inner_height-height_hiatus) + "px";
+
 
 // NAVIGATION SCRIPTS
 
 function toggle_nav_tags() {
 
-	var parent_these = document.getElementById('nav_bar');   // parent of the elements you seek
-	var these = parent_these.getElementsByClassName('nav_lnk');   // elements sought
+	// var parent_these = document.getElementById('nav_bar');   // parent of the elements you seek
+	var these = header_nav.getElementsByClassName('nav_lnk');   // elements sought
 	var toggle_class = 'nav_a_act';   // class that needs toggling
 
 	// var length = these.length;   // length of the array of elements to iterate through

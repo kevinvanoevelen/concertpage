@@ -92,7 +92,10 @@ function write_footer() {
 	var prod_name = "some video productions";
 	var space = "<span class=\"space\">---</span>";
 
-	var foot_text = auth_name + space + prod_name;
+	var x = new Date(document.lastModified).toLocaleDateString();
+	var y = new Date(document.lastModified).toLocaleTimeString();
+
+	var foot_text = prod_name + space + "Last modified at " + y + " on " + x; // auth_name + space + 
 
 	foot_area.innerHTML = foot_text;
 

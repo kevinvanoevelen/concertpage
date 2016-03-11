@@ -99,7 +99,9 @@ iframe {
 
 .logo {
 	background: url('../img/joe_01.jpg');
-	background-size: cover;
+	background-size: 100% 96%;
+	background-repeat: no-repeat;
+	background-color: rgba(0,0,0,0.95);
 }
 
 .space {

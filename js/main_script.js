@@ -10,13 +10,15 @@ console.log("this is the state on 1: " + state);
 var inner_width = window.innerWidth;
 var inner_height = window.innerHeight;
 
-var section_wraps = document.getElementsByClassName('section_wrap');
+var section_wrap = document.getElementById('section_wrap');
+var video_wrap = document.getElementsByClassName('video_wrap');
 var height_hiatus = 160; // everything that adds to the height, except the section_wrap/header nav
 var header_nav = document.getElementById('nav_bar');
 var height_var = (inner_height-height_hiatus).toString() + "px";
 
 // automatically calculates and sets the height of section_wraps
-for(var i = 0; i < section_wraps.length; i++) {section_wraps[i].style.height = height_var;};
+for(var i = 0; i < video_wrap.length; i++) {video_wrap[i].style.height = height_var;};
+section_wrap.style.height = height_var;
 header_nav.style.height = height_var;
 
 

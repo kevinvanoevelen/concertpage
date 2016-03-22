@@ -3,7 +3,7 @@
 /* TITLE */
 
 var state = document.readyState;
-console.log("this is the state on 1: " + state);
+// console.log("this is the state on 1: " + state);
 
 //	capturing the window width and height for further use
 

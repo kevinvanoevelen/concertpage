@@ -391,7 +391,7 @@ for(var i = 0; i < arrow_arr.length; i++) {
 			console.log(large_frame_01.src, large_frame_02.src, prev_source_01);
 			prev_source_02 = large_frame_02.src;
 			setTimeout(function() { large_frame_02.src = ""; },2000);
-			large_frame_01.src = prev_source_01;
+			large_frame_01.src = prev_source_01.replace("autoplay=1", "autoplay=0");
 
 			var target = schism;
 			var top = hiatus-2;
@@ -410,7 +410,8 @@ for(var i = 0; i < arrow_arr.length; i++) {
 			console.log(large_frame_01.src, large_frame_02.src, prev_source_02);
 			prev_source_01 = large_frame_01.src;
 			setTimeout(function() { large_frame_01.src = ""; },1000);
-			large_frame_02.src = prev_source_02;
+			large_frame_02.src = prev_source_02.replace("autoplay=1", "autoplay=0");
+			//large_frame_01.src = "";//large_frame_01.src.replace("autoplay=1", "autoplay=0");
 
 			var target = 0;
 			var top = target;
